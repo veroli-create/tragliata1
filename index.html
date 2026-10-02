@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tragliata Game</title>
+<style>
+:root{--bg:#f3efe6;--ink:#2b2a26;--mute:#6b675c;--card:#fbf9f4;--line:#d9d2c0;--acc:#4f6b3a;--accink:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1f1a;--ink:#ece8dc;--mute:#a39e8d;--card:#262922;--line:#3a3d34;--acc:#9bbf7a;--accink:#1d1f1a}}
+:root[data-theme="dark"]{--bg:#1d1f1a;--ink:#ece8dc;--mute:#a39e8d;--card:#262922;--line:#3a3d34;--acc:#9bbf7a;--accink:#1d1f1a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Times New Roman",serif}
+main{max-width:34rem;margin:0 auto;padding:1.5rem 1.25rem 3rem}
+h1{font:700 1.9rem/1.2 Georgia,serif;margin:.25rem 0 .2rem}
+.sub{font-style:italic;color:var(--mute);margin:0 0 1.5rem;font-size:1.1rem}
+.n{display:inline-block;background:var(--acc);color:var(--accink);border-radius:2rem;padding:.1rem .8rem;font:600 .9rem system-ui,sans-serif}
+section{border-left:4px solid var(--line);padding:.1rem 0 .1rem 1rem;margin:0 0 1.4rem}
+section.go{border-color:var(--acc);background:var(--card);padding:.9rem 1rem;border-radius:0 .5rem .5rem 0}
+h2{font:700 1.05rem system-ui,sans-serif;margin:0 0 .3rem;color:var(--acc)}
+p{margin:0}
+ul{list-style:none;padding:0;margin:1.5rem 0}
+li a{display:block;padding:.8rem 1rem;margin-bottom:.5rem;background:var(--card);border:1px solid var(--line);border-radius:.5rem;color:var(--ink);text-decoration:none}
+li a:focus-visible,.back:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.back{display:inline-block;margin-top:.5rem;color:var(--mute);font:.95rem system-ui,sans-serif}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+var S=[
+["Drinking Trough","Everyone's Water",
+"the drinking trough was shared by the whole village, a place where people and animals came to drink.",
+"place the small bucket you find next to the QR code about 10 steps from the trough. Fill it to the brim by passing water from person to person, using the cups with holes from your kit. Find a way to help each other! You have 4 minutes.",
+"a photo of the full bucket and a video of the activity."],
+["Swimming Pool","The Pioneers' Leap",
+"in the 1950s, families from far away took a leap into the unknown to transform this land.",
+"take a photo of the whole team in the air, with everyone's feet off the ground at the same moment.",
+"the photo."],
+["Viewpoint at the Church of Sant'Isidoro","Your Partner's Field",
+"from the viewpoint of the church of Sant'Isidoro, patron saint of farmers, you can see the whole valley.",
+"get into pairs (one group of three if your team has an odd number of people). Take 2 minutes each to tell your partner about a moment at work you are proud of. Then write your partner's name on a sticky note, with one word that sums up their story. After taking the photo for the Game Master, stick your notes on the board you'll find here (it may be a little hidden!).",
+"a photo of everyone in pairs, each person holding their partner's sticky note."],
+["Steps","The Carved Path (La Tagliata)",
+"the Etruscan tagliate are paths carved into the volcanic rock and walked for centuries by different generations: people far apart in time, connected by the same road. You also come from different paths in life. As you climb these steps, find out what you have in common.",
+"find 3 things you all have in common. They must not be about work and must not be obvious.",
+"a creative video presenting your 3 things, using the steps to tell them."],
+["Viewpoint with Swing","The Watchtower",
+"from the village tower, lookouts watched for approaching Saracen raiders.",
+"create a living statue with the whole team, a frozen scene showing the moment the lookouts spotted the Saracens. Everyone must be in the photo, so find a way to take it without leaving anyone out!",
+"the photo."],
+["Sports Field","The Cooperative's Toolbox",
+"the cooperatives founded here in the 1950s worked because everyone brought a different skill.",
+"on a green sticky note, write the skill you think best describes you, without showing it to anyone. Then, on yellow sticky notes, write a skill or quality for each of your teammates and stick it on them. Finally, read the yellow notes you received and tell the others which one surprised you most. On the board you'll find here, stick your green note and, just below it, the yellow note that surprised you most.",
+"a group photo with the sticky notes visible."],
+["Table Football","The Daily Harvest",
+"the families who came to Tragliata in the 1950s farmed difficult land. But anyone who farms knows that you count your harvest by what has grown, not by what is missing. Here, by the table football, a place to play and take a break, stop and gather the good things your work gives you.",
+"each of you thinks of one positive thing that your work at FAO gives you: not what is missing, but what is there. Write it in one word on a slip of paper, fold it and put it in the jar. If you like, read your word aloud to the others before putting it in. Before you leave, make sure all your slips are in the jar, and please don't open the ones left by other teams.",
+"a group photo next to the jar, with each person holding their folded slip."],
+["The Log","Roots",
+"everyone who has lived in this village, from the Etruscans to today's farmers, has put down roots in land that was not easy at first.",
+"sit together on the log and choose one person to guide the group through one minute of breathing. Everyone else breathes with their eyes closed.",
+"a short video of the breathing moment."],
+["Mural","Who Knows the Way",
+"the families who came to Tragliata in the 1950s found themselves in a land they did not know. To find their way, they had to trust each other and show each other the path. Now it's your turn: trust the person guiding you, and then guide someone else.",
+"here you'll find 3 paths marked with cones and 3 blindfolds. You play in a chain, so everyone is guided once and guides once: stand in a circle; the first person guides the second, the second guides the third, and so on, until the last person guides the first. The blindfolded person must reach the finish line without touching the cones. The guide may not hold their hand, but you decide together how to communicate: your voice, a tap on the arm to turn, or anything else. You can use all 3 paths at the same time. Before you leave, put the cones back as you found them.",
+"a video of the activity."]];
+function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function render(){
+var i=parseInt(location.hash.replace("#",""),10),a=document.getElementById("app"),h;
+if(i>=1&&i<=9){var s=S[i-1];
+h='<h1>'+esc(s[0])+'</h1><p class="sub">'+esc(s[1])+'</p>'+
+'<section><h2>Story</h2><p>'+esc(s[2])+'</p></section>'+
+'<section class="go"><h2>Challenge</h2><p>'+esc(s[3])+'</p></section>'+
+'<section><h2>Send to the Game Master</h2><p>'+esc(s[4])+'</p></section>';
+document.title=s[0]+" – Tragliata Game";
+}else{
+h='<h1>Tragliata Game</h1><p class="sub">Choose your stop</p><ul>';
+for(var k=0;k<9;k++)h+='<li><a href="#'+(k+1)+'">'+(k+1)+'. '+esc(S[k][0])+'</a></li>';
+h+='</ul>';}
+a.innerHTML=h;window.scrollTo(0,0);}
+window.addEventListener("hashchange",render);render();
+</script>
+</body>
+</html>
